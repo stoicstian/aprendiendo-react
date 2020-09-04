@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Tarea.css";
 
 class Tarea extends Component {
   StyledCompleted() {
