@@ -9,10 +9,21 @@ class App extends Component {
     tareasStateApp: tareasDatos,
   };
 
+  agregarTarea = (title, description) => {
+    const nuevaTarea = {
+      title: title,
+      description: description,
+      id: this.state.tareasStateApp.length,
+    };
+    this.setState({
+      tareasStateApp: [...this.state.tareasStateApp, nuevaTarea],
+    });
+  };
+
   render() {
     return (
       <div>
-        <Formulario />
+        <Formulario agregarTarea={this.agregarTarea} />
         <ListaTareas propiedadTareas={this.state.tareasStateApp} />
       </div>
     );

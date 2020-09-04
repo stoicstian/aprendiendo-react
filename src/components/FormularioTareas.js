@@ -7,8 +7,8 @@ class FormularioTareas extends Component {
   };
 
   onSubmit = (event) => {
+    this.props.agregarTarea(this.state.title, this.state.description);
     event.preventDefault();
-    console.log(this.state);
   };
 
   onChange = (event) => {
