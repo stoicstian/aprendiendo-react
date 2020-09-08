@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Personal from "./components/Example";
+import Clock from "./components/Clock";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +13,7 @@ ReactDOM.render(
 
 ReactDOM.render(
   <React.StrictMode>
-    <Personal name="Sebastián" />
+    <Clock />
   </React.StrictMode>,
   document.getElementById("personal")
 );
