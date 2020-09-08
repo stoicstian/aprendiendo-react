@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import tareasDatos from "./example/tasks.json";
 import ListaTareas from "./components/ListaTareas";
 import Formulario from "./components/FormularioTareas";
+import Example from "./components/Example";
 import "./App.css";
 
 class App extends Component {
