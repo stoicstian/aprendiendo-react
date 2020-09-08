@@ -8,12 +8,16 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
+  console.log("Estoy en index.html")
 );
 
 ReactDOM.render(
   <React.StrictMode>
-    <Clock />
+    <Clock intervalo={1} />
+    <Clock intervalo={3} />
+    <Clock intervalo={7} />
+    <Clock intervalo={11} />
   </React.StrictMode>,
   document.getElementById("personal")
 );
