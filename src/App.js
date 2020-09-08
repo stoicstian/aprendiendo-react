@@ -20,6 +20,12 @@ class App extends Component {
     });
   };
 
+  eliminarTarea = (id) => {
+    this.state.tareasStateApp.filter();
+  };
+
+  marcarTarea = () => {};
+
   render() {
     return (
       <div>
