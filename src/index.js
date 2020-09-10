@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Clock from "./components/Clock";
-import Button from "./components/Button";
+// import Button from "./components/Button";
+import LoginControl from "./components/LoginControl";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,7 +26,7 @@ ReactDOM.render(
 
 ReactDOM.render(
   <React.StrictMode>
-    <Button />
+    <LoginControl />
   </React.StrictMode>,
   document.getElementById("button")
 );

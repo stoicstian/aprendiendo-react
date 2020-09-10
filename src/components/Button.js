@@ -5,6 +5,8 @@ class Button extends Component {
     super(props);
     this.state = { isToggleOn: true };
     this.handleClick = this.handleClick.bind(this);
+    // console.log(typeof this.props.mostrar);
+    const propiedad = props.mostrar;
   }
 
   handleClick() {
