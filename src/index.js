@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Clock from "./components/Clock";
+import Button from "./components/Button";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,13 @@ ReactDOM.render(
     <Clock intervalo={11} />
   </React.StrictMode>,
   document.getElementById("personal")
+);
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Button />
+  </React.StrictMode>,
+  document.getElementById("button")
 );
 
 // If you want your app to work offline and load faster, you can change
