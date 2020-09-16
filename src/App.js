@@ -27,10 +27,16 @@ class App extends Component {
   marcarTarea = () => {};
 
   render() {
+    const numbers = [1, 2, 3, 4, 5];
+    const listItems = numbers.map((number) => (
+      <li key={number.toString()}>{number}</li>
+    ));
+
     return (
       <div>
         <Formulario agregarTarea={this.agregarTarea} />
         <ListaTareas propiedadTareas={this.state.tareasStateApp} />
+        <ul>{listItems}</ul>,
       </div>
     );
   }
