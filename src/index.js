@@ -2,25 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Clock from "./components/Clock";
+// import App from "./App";
+// import Clock from "./components/Clock";
 // import Button from "./components/Button";
-import LoginControl from "./components/LoginControl";
-import Calculator from "./components/Calculator";
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Calculator />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+// import LoginControl from "./components/LoginControl";
+// import Calculator from "./components/Calculator";
 
 // ReactDOM.render(
 //   <React.StrictMode>
-//     <App />
+//     <Calculator />
 //   </React.StrictMode>,
-//   document.getElementById("root"),
-//   console.log("Estoy en index.html")
+//   document.getElementById("root")
 // );
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root"),
+  console.log("Estoy en index.html")
+);
 
 // ReactDOM.render(
 //   <React.StrictMode>

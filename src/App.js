@@ -1,45 +1,56 @@
-import React, { Component } from "react";
-import tareasDatos from "./example/tasks.json";
-import ListaTareas from "./components/ListaTareas";
-import Formulario from "./components/FormularioTareas";
+import React from "react";
+
+// import tareasDatos from "./example/tasks.json";
+// import ListaTareas from "./components/ListaTareas";
+// import Formulario from "./components/FormularioTareas";
+import Posts from "./components/Posts";
 import "./App.css";
 
-class App extends Component {
-  state = {
-    tareasStateApp: tareasDatos,
-  };
+const App = () => {
+  return (
+    <div className="App">
+      Hello World
+      <Posts />
+    </div>
+  );
+};
 
-  agregarTarea = (title, description) => {
-    const nuevaTarea = {
-      title: title,
-      description: description,
-      id: this.state.tareasStateApp.length,
-    };
-    this.setState({
-      tareasStateApp: [...this.state.tareasStateApp, nuevaTarea],
-    });
-  };
+// class App extends Component {
+//   state = {
+//     tareasStateApp: tareasDatos,
+//   };
 
-  eliminarTarea = (id) => {
-    this.state.tareasStateApp.filter();
-  };
+//   agregarTarea = (title, description) => {
+//     const nuevaTarea = {
+//       title: title,
+//       description: description,
+//       id: this.state.tareasStateApp.length,
+//     };
+//     this.setState({
+//       tareasStateApp: [...this.state.tareasStateApp, nuevaTarea],
+//     });
+//   };
 
-  marcarTarea = () => {};
+//   eliminarTarea = (id) => {
+//     this.state.tareasStateApp.filter();
+//   };
 
-  render() {
-    const numbers = [1, 2, 3, 4, 5];
-    const listItems = numbers.map((number) => (
-      <li key={number.toString()}>{number}</li>
-    ));
+//   marcarTarea = () => {};
 
-    return (
-      <div>
-        <Formulario agregarTarea={this.agregarTarea} />
-        <ListaTareas propiedadTareas={this.state.tareasStateApp} />
-        <ul>{listItems}</ul>,
-      </div>
-    );
-  }
-}
+//   render() {
+//     const numbers = [1, 2, 3, 4, 5];
+//     const listItems = numbers.map((number) => (
+//       <li key={number.toString()}>{number}</li>
+//     ));
+
+//     return (
+//       <div>
+//         <Formulario agregarTarea={this.agregarTarea} />
+//         <ListaTareas propiedadTareas={this.state.tareasStateApp} />
+//         <ul>{listItems}</ul>,
+//       </div>
+//     );
+//   }
+// }
 
 export default App;
