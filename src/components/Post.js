@@ -1,10 +1,15 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Image } from "react-bootstrap";
 
 const Post = (props) => {
   return (
     <Card style={{ width: "50%", margin: "0 auto" }} className="mb-3">
       <Card.Body>
+        <Image
+          src={props.users[props.index].picture.medium}
+          roundedCircle
+        ></Image>
+        <Card.Text>{props.users[props.index].name.first}</Card.Text>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
         <Button onClick={props.likePost} variant="primary" className="mr-1">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Spinner, Alert } from "react-bootstrap";
 import Post from "../components/Post";
+import axios from "axios";
 
 let myPosts = [
   {
@@ -72,14 +73,15 @@ const Posts = () => {
   const [loaded, setLoaded] = useState(false);
   const [posts, setPosts] = useState([]);
   const [visible, setVisible] = useState(4);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     getData();
-    setTimeout(() => {
-      setLoaded(true);
-    }, 2000);
-  }, []);
 
+    // setTimeout(() => {
+    //   setLoaded(true);
+    // }, 2000);
+  }, []);
   // const handleLoad = () => {
   //   let cLoaded = !loaded;
   //   setLoaded(cLoaded);
@@ -88,6 +90,20 @@ const Posts = () => {
 
   const getData = () => {
     setPosts(myPosts);
+    const url = "https://randomuser.me/api/?results=9";
+    axios
+      .get(url)
+      .then((res) => {
+        let data = res.data.results;
+        data.forEach((item, index) => {
+          item["id"] = index;
+        });
+        // setUsers(res.data.results);
+        setUsers(data);
+        console.log(data);
+      })
+      .then(() => setLoaded(true))
+      .catch((err) => console.log("ups.. we have and error: ", err));
   };
 
   const handleShowMorePosts = () => {
@@ -112,19 +128,21 @@ const Posts = () => {
 
   const handleDeletePost = (id) => {
     const cposts = posts.filter((post) => post.id !== id);
+    const cusers = users.filter((user) => user.id !== id);
     setPosts(cposts);
+    setUsers(cusers);
   };
 
-  var valor;
-  if (loaded !== true) {
-    valor = <div>Post will be here</div>;
-  } else {
-    valor = (
-      <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
-    );
-  }
+  // var valor;
+  // if (loaded !== true) {
+  //   valor = <div>Post will be here</div>;
+  // } else {
+  //   valor = (
+  //     <Spinner animation="border" role="status">
+  //       <span className="sr-only">Loading...</span>
+  //     </Spinner>
+  //   );
+  // }
 
   return (
     <div className="mt-3 mb-3">
@@ -134,10 +152,12 @@ const Posts = () => {
       {!loaded ? (
         <Spinner animation="border" />
       ) : (
-        posts.slice(0, visible).map((post) => {
+        posts.slice(0, visible).map((post, index) => {
           return (
             <Post
               key={post.id}
+              index={index}
+              users={users}
               title={post.title}
               description={post.description}
               likes={post.likes}
@@ -149,11 +169,19 @@ const Posts = () => {
         })
       )}
       <br />
-
-      {loaded && (
-        <Button onClick={handleShowMorePosts} variant="warning">
-          Load more posts
-        </Button>
+      {loaded && posts.length <= visible ? (
+        posts.length > 0 ? (
+          <h3>No more posts to load</h3>
+        ) : (
+          <h3>No posts here</h3>
+        )
+      ) : (
+        loaded && (
+          <Button onClick={handleShowMorePosts} variant="warning">
+            {" "}
+            Load more posts
+          </Button>
+        )
       )}
     </div>
   );
