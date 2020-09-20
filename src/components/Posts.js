@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Spinner, Alert } from "react-bootstrap";
 import Post from "../components/Post";
 
 let myPosts = [
@@ -71,6 +71,7 @@ let myPosts = [
 const Posts = () => {
   const [loaded, setLoaded] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [visible, setVisible] = useState(4);
 
   useEffect(() => {
     getData();
@@ -89,6 +90,31 @@ const Posts = () => {
     setPosts(myPosts);
   };
 
+  const handleShowMorePosts = () => {
+    setVisible(visible + 3);
+  };
+
+  const handleLike = (id) => {
+    const cposts = [...posts];
+    cposts.forEach((post) => {
+      if (post.id === id) {
+        if (post.liked) {
+          post.liked = false;
+          post.likes -= 1;
+        } else {
+          post.liked = true;
+          post.likes += 1;
+        }
+      }
+    });
+    setPosts(cposts);
+  };
+
+  const handleDeletePost = (id) => {
+    const cposts = posts.filter((post) => post.id !== id);
+    setPosts(cposts);
+  };
+
   var valor;
   if (loaded !== true) {
     valor = <div>Post will be here</div>;
@@ -101,15 +127,33 @@ const Posts = () => {
   }
 
   return (
-    <div>
+    <div className="mt-3 mb-3">
+      {loaded && posts.length > 0 && (
+        <Alert variant="success">All posts are loaded</Alert>
+      )}
       {!loaded ? (
         <Spinner animation="border" />
       ) : (
-        posts.map((post) => {
+        posts.slice(0, visible).map((post) => {
           return (
-            <Post title={post.title} description={post.description}></Post>
+            <Post
+              key={post.id}
+              title={post.title}
+              description={post.description}
+              likes={post.likes}
+              liked={post.liked}
+              likePost={() => handleLike(post.id)}
+              delete={() => handleDeletePost(post.id)}
+            ></Post>
           );
         })
+      )}
+      <br />
+
+      {loaded && (
+        <Button onClick={handleShowMorePosts} variant="warning">
+          Load more posts
+        </Button>
       )}
     </div>
   );

@@ -7,13 +7,14 @@ const Post = (props) => {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
-        <Button variant="primary" className="mr-1">
-          Like
+        <Button onClick={props.likePost} variant="primary" className="mr-1">
+          {props.liked ? "Unlike" : "Like"}
         </Button>
-        <Button variant="danger" className="ml-1">
+        <Button onClick={props.delete} variant="danger" className="ml-1">
           Delete
         </Button>
       </Card.Body>
+      <Card.Text>{props.likes}</Card.Text>
     </Card>
   );
 };
